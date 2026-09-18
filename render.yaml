@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: gridwise-service
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-flash-lite-latest
+      - key: LOG_LEVEL
+        value: INFO
+      - key: REQUEST_TIMEOUT_SECONDS
+        value: "25"
+      - key: LLM_CALL_TIMEOUT_MS
+        value: "10000"
